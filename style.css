@@ -1,12 +1,43 @@
 .item {
-  width: 100px;
-  height: 100px;
+  width: 24.3vw;
+  height: 13vh;
   display: inline-block;
   background: linear-gradient(45deg,rgb(219, 162, 162),rgb(194, 242, 237));
   text-align: center;
   line-height: 100px;
   transition: background 0.2s;
+  font-size: 1.7em;
+  
 }
 .item.active {
   background: linear-gradient(45deg,rgb(202, 37, 37),rgb(103, 103, 246));
+}
+
+#lottery{
+  width: 100%;
+}
+
+#startBtn{
+  margin-top: 30px;
+  width: 98.3vw;
+  height: 5vh;
+  background: linear-gradient(45deg,rgb(92, 9, 9),rgb(149, 149, 228));
+  border: none;
+  font-size: 1.2em;
+  color: aliceblue;
+}
+
+#logo{
+  width: 20vw;
+  height: 9vh;
+}
+
+#header{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+h2{
+  margin-left: 620px;
 }
