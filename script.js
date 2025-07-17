@@ -2,25 +2,34 @@ const items = document.querySelectorAll('.item');
 let current = 0;
 let timer = null;
 let speed = 100;
-let count = 0;
-let resultIndex = Math.floor(Math.random() * items.length); // 最终奖品位置
+let totalSteps = 0;
+let stepsLeft = 0;
+let resultIndex = 0;
+let finalIndex = 0;
+
+const cashbackMap = {
+  2: "10%",
+  3: "99%",
+  0: "199%",
+  1: "1%"
+};
 
 function highlight(index) {
   items.forEach(item => item.classList.remove('active'));
   items[index].classList.add('active');
+  finalIndex = index;
 }
 
 function roll() {
   highlight(current % items.length);
   current++;
-  count++;
+  stepsLeft--;
 
-  // 模拟减速
-  if (count > 30 && current % items.length === resultIndex) {
-    clearInterval(timer);
-    alert(`恭喜你抽到了 ${items[resultIndex].innerText}`);
+  if (stepsLeft <= 0) {
+    clearTimeout(timer);
+    alert(`Congratulations! You got a cashback of ${cashbackMap[finalIndex]}`);
   } else {
-    speed += 10; // 慢慢变慢
+    speed += 15;
     clearTimeout(timer);
     timer = setTimeout(roll, speed);
   }
@@ -28,7 +37,13 @@ function roll() {
 
 document.getElementById('startBtn').addEventListener('click', () => {
   speed = 100;
-  count = 0;
-  resultIndex = Math.floor(Math.random() * items.length); // 每次重新计算
+  current = 0;
+
+  resultIndex = Math.floor(Math.random() * items.length);
+
+  const baseRounds = 5;
+  totalSteps = baseRounds * items.length + resultIndex;
+  stepsLeft = totalSteps;
+
   roll();
 });
