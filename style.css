@@ -1,0 +1,12 @@
+.item {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  background: linear-gradient(45deg,rgb(219, 162, 162),rgb(194, 242, 237));
+  text-align: center;
+  line-height: 100px;
+  transition: background 0.2s;
+}
+.item.active {
+  background: linear-gradient(45deg,rgb(202, 37, 37),rgb(103, 103, 246));
+}
